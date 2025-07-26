@@ -1,4 +1,4 @@
-# WhiteRabbitMCP — The Model Context Protocol (MCP) Pentesting Toolkit
+## WhiteRabbitMCP — The Model Context Protocol (MCP) Pentesting Toolkit
 ```
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣆⡀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣦⠀⠀⠀⠀⠀
@@ -151,6 +151,6 @@ If you want to contribute to this project, please follow these steps:
 ## Disclaimer
 This project is for educational purposes only. Use it at your own risk. The author is not responsible for any damages or legal issues that may arise from the use of this software.
 
-* **Version**: 0.1.0
+* **Version**: v1.0
 * **License**: MIT
 * **Author**: Built with ❤️ by [@atiilla](https://github.com/atiilla)
