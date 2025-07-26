@@ -1,0 +1,171 @@
+name: Security and Quality Checks
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
+jobs:
+  security-checks:
+    runs-on: ubuntu-latest
+    name: Security and Quality Analysis
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install safety bandit semgrep
+          
+      - name: Run safety check
+        run: |
+          echo "🔍 Checking for known security vulnerabilities..."
+          safety check --json --output safety-report.json || true
+          if [ -f safety-report.json ]; then
+            cat safety-report.json
+          fi
+          
+      - name: Run bandit security linter
+        run: |
+          echo "🔒 Running Bandit security analysis..."
+          bandit -r . -f json -o bandit-report.json || true
+          if [ -f bandit-report.json ]; then
+            echo "Bandit analysis completed. Check bandit-report.json for details."
+          fi
+          
+      - name: Docker security scan
+        run: |
+          echo "🐳 Building Docker image for security scan..."
+          docker build -t whiterabbitmcp-security-test .
+          
+          # Basic container security check
+          echo "🔍 Checking container for basic security issues..."
+          docker run --rm whiterabbitmcp-security-test python -c "
+          import os
+          import stat
+          
+          # Check if running as root (security concern)
+          if os.getuid() == 0:
+              print('⚠️  WARNING: Container running as root user')
+          else:
+              print('✅ Container not running as root')
+              
+          # Check for sensitive files
+          sensitive_files = ['/etc/passwd', '/etc/shadow', '/etc/hosts']
+          for file in sensitive_files:
+              if os.path.exists(file):
+                  print(f'📁 Found {file}')
+              else:
+                  print(f'❌ {file} not accessible')
+          "
+          
+      - name: Test core functionality
+        run: |
+          echo "🧪 Testing core MCP server functionality..."
+          
+          # Test server startup
+          python -c "
+          import server
+          import sys
+          
+          try:
+              # Basic server validation
+              if hasattr(server, 'app'):
+                  print('✅ Server app object found')
+              else:
+                  print('❌ Server app object not found')
+                  sys.exit(1)
+          except Exception as e:
+              print(f'❌ Server test failed: {e}')
+              sys.exit(1)
+          "
+          
+          # Test toolkit modules
+          python -c "
+          import sys
+          import os
+          sys.path.append('toolkit')
+          
+          modules_to_test = [
+              'nmap', 'holehe', 'sherlock', 'sqlmap', 
+              'sublist3r', 'dnsrecon', 'wpscan', 'zmap', 'ocr2text'
+          ]
+          
+          failed_modules = []
+          for module in modules_to_test:
+              try:
+                  __import__(module)
+                  print(f'✅ {module} module imported successfully')
+              except ImportError as e:
+                  print(f'❌ {module} import failed: {e}')
+                  failed_modules.append(module)
+          
+          if failed_modules:
+              print(f'❌ Failed to import: {failed_modules}')
+              sys.exit(1)
+          else:
+              print('✅ All toolkit modules imported successfully')
+          "
+          
+      - name: Check for hardcoded secrets
+        run: |
+          echo "🔐 Checking for potential hardcoded secrets..."
+          
+          # Simple regex patterns for common secrets
+          if grep -r -i "password\s*=" . --exclude-dir=.git --exclude="*.md" --exclude="*.yml" --exclude="*.yaml"; then
+            echo "⚠️  Potential hardcoded passwords found"
+          fi
+          
+          if grep -r -i "api[_-]key" . --exclude-dir=.git --exclude="*.md" --exclude="*.yml" --exclude="*.yaml"; then
+            echo "⚠️  Potential API keys found"
+          fi
+          
+          if grep -r -i "secret[_-]key" . --exclude-dir=.git --exclude="*.md" --exclude="*.yml" --exclude="*.yaml"; then
+            echo "⚠️  Potential secret keys found"
+          fi
+          
+          echo "✅ Secret scanning completed"
+          
+      - name: Validate requirements.txt
+        run: |
+          echo "📦 Validating requirements.txt..."
+          
+          # Check for version pinning
+          if grep -E "^[^=<>]*$" requirements.txt; then
+            echo "⚠️  Some dependencies are not version-pinned"
+          else
+            echo "✅ All dependencies are version-pinned"
+          fi
+          
+          # Check for suspicious packages
+          suspicious_packages=("pickle" "eval" "exec" "subprocess")
+          for pkg in "${suspicious_packages[@]}"; do
+            if grep -i "$pkg" requirements.txt; then
+              echo "⚠️  Potentially suspicious package: $pkg"
+            fi
+          done
+          
+      - name: Upload security reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: security-reports
+          path: |
+            safety-report.json
+            bandit-report.json
+          retention-days: 30

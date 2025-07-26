@@ -1,0 +1,99 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+        
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Lint with flake8
+        run: |
+          pip install flake8
+          # Stop the build if there are Python syntax errors or undefined names
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          # Exit-zero treats all errors as warnings
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+          
+      - name: Test imports
+        run: |
+          # Test server import
+          python -c "import server; print('✅ Server imported successfully')"
+          
+          # Test toolkit imports
+          python -c "
+          import sys
+          import os
+          sys.path.append('toolkit')
+          
+          modules = ['nmap', 'holehe', 'sherlock', 'sqlmap', 'sublist3r', 'dnsrecon', 'wpscan', 'zmap', 'ocr2text']
+          for module in modules:
+              try:
+                  __import__(module)
+                  print(f'✅ {module} imported successfully')
+              except ImportError as e:
+                  print(f'❌ {module} import failed: {e}')
+                  raise
+          "
+          
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Build Docker image
+        run: |
+          docker build -t whiterabbitmcp:test .
+          
+      - name: Test Docker container
+        run: |
+          # Test that the container starts without errors
+          docker run --rm whiterabbitmcp:test python -c "
+          import server
+          print('✅ Docker container test passed')
+          "
+          
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          
+      - name: Upload Trivy scan results
+        uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: 'trivy-results.sarif'

@@ -1,0 +1,11 @@
+{
+  "servers": {
+    "WhiteRabbitMCP": {
+      "command": "node",
+      "args": [
+        "-e",
+        "require('child_process').execSync('docker rm -f whiterabbitmcp || true'); require('child_process').spawn('docker', ['run', '--rm', '-i', '--net=host', '--privileged', '--name', 'whiterabbitmcp', 'whiterabbitmcp'], { stdio: 'inherit' });"
+      ]
+    }
+  }
+}

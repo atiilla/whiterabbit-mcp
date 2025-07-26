@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+   <title>WhiteRabbitMCP</title>
+   <style>
+      body {
+         background-color: #000000;
+         margin: 0;
+
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         min-height: 100vh;
+      }
+
+      #flag-container {
+         position: relative;
+         overflow: hidden;
+         max-width: 100%;
+         height: 100vh;
+      }
+
+
+      #tiresult {
+         font-size: 16px;
+         background-color: #000000;
+         font-weight: bold;
+         padding: 3px 5px;
+         margin: 0;
+         /* scroll y hidden x */
+         overflow-y: hidden;
+         display: inline-block;
+         white-space: pre;
+         width: 100%;
+         overflow-x: auto;
+      }
+
+      #whiterabbitmcp {
+         background-color: #000000;
+         font-weight: bold;
+         padding: 3px 5px;
+         margin: 0;
+         display: inline-block;
+         font-size: 18px;
+         white-space: pre;
+         width: 100%;
+         overflow-x: auto;
+         color: #e9e9e9;
+      }
+
+      /* Responsive font sizes */
+      @media screen and (max-width: 1024px) {
+
+         #tiresult,
+         #whiterabbitmcp {
+            font-size: 20px;
+         }
+
+         #whiterabbitmcp {
+            font-size: 10px;
+         }
+      }
+
+      @media screen and (max-width: 768px) {
+
+         #tiresult,
+         #whiterabbitmcp {
+            font-size: 20px;
+         }
+
+         #whiterabbitmcp {
+            font-size: 10px;
+         }
+      }
+
+      @media screen and (max-width: 480px) {
+
+         #tiresult,
+         #whiterabbitmcp {
+            font-size: 14px;
+         }
+
+         #whiterabbitmcp {
+            font-size: 10px;
+         }
+      }
+
+      /* Animation for each character */
+      #tiresult b {
+         display: inline-block;
+         animation: wave 1s infinite ease-in-out;
+         transform-origin: center bottom;
+         position: relative;
+      }
+
+      /* Base animation keyframes - will be overridden by JavaScript for responsive sizing */
+      @keyframes wave {
+         0% {
+            transform: translateY(0) rotate(0deg);
+         }
+
+         20% {
+            transform: translateY(-1px) rotate(1.5deg) translateX(0.8px);
+         }
+
+         40% {
+            transform: translateY(-0.5px) rotate(0.5deg) translateX(0.4px);
+         }
+
+         60% {
+            transform: translateY(0) rotate(0deg);
+         }
+
+         80% {
+            transform: translateY(0.8px) rotate(-1.5deg) translateX(-0.8px);
+         }
+
+         100% {
+            transform: translateY(0) rotate(0deg);
+         }
+      }
+   </style>
+</head>
+
+<body>
+   <div id="flag-container">
+      <pre id="whiterabbitmcp">
+ _ __ __ ___   _____ _ __  _ __ ___   ___ _ __  
+| '__/ _` \ \ / / _ \ '_ \| '_ ` _ \ / __| '_ \ 
+| | | (_| |\ V /  __/ | | | | | | | | (__| |_) |
+|_|  \__,_| \_/ \___|_| |_|_| |_| |_|\___| .__/ 
+                                         | |    
+                      whiterabbitmcp v0.1.0    
+</pre>
+  <pre id="tiresult" style="font-size: 9px; background-color: #000000; font-weight: bold; padding: 4px 5px; --fs: 9px;"><b style="color:#000000">10010011110110100011001101010111111010110010</b><b style="color:#010001">00</b><b style="color:#000000">01</b><b style="color:#010101">0</b><b style="color:#030004">0</b><b style="color:#000201">1</b><b style="color:#000200">1</b><b style="color:#000000">1</b><b style="color:#020403">1</b><b style="color:#000002">0</b><b style="color:#000000">0</b><b style="color:#000100">0</b><b style="color:#010002">0</b><b style="color:#000000">1010111110010000001111</b>
+<b style="color:#000000">1010110010001111011010110110110011001101011</b><b style="color:#000100">0</b><b style="color:#010001">0</b><b style="color:#050805">0</b><b style="color:#253C20">1</b><b style="color:#132111">1</b><b style="color:#000000">1</b><b style="color:#030303">1</b><b style="color:#020205">1</b><b style="color:#000002">1</b><b style="color:#0B170D">0</b><b style="color:#4C7446">1</b><b style="color:#1E3117">0</b><b style="color:#010002">0</b><b style="color:#000101">0</b><b style="color:#010001">1</b><b style="color:#000000">1100110100110000111011</b>
+<b style="color:#000000">1110010001110001010100110101011000101111100</b><b style="color:#010101">0</b><b style="color:#000000">1</b><b style="color:#10290E">1</b><b style="color:#ADCEA7">1</b><b style="color:#A4C19E">0</b><b style="color:#173013">0</b><b style="color:#010002">0</b><b style="color:#000003">0</b><b style="color:#0C200B">0</b><b style="color:#85A77E">0</b><b style="color:#D4E9D0">1</b><b style="color:#538B4B">1</b><b style="color:#10200F">0</b><b style="color:#000000">1</b><b style="color:#010001">0</b><b style="color:#000000">1110000111000100110110</b>
+<b style="color:#000000">101101100000110110000010000100100100100</b><b style="color:#010000">10</b><b style="color:#000100">0</b><b style="color:#000000">0</b><b style="color:#020001">1</b><b style="color:#000500">0</b><b style="color:#6A8765">1</b><b style="color:#BBD5B5">0</b><b style="color:#ECF6E6">0</b><b style="color:#7EA975">0</b><b style="color:#0E260A">1</b><b style="color:#000301">1</b><b style="color:#55844E">0</b><b style="color:#F3FDED">1</b><b style="color:#A0BA9C">0</b><b style="color:#C9E1C4">0</b><b style="color:#628A5A">1</b><b style="color:#060E05">0</b><b style="color:#000000">1</b><b style="color:#010101">0</b><b style="color:#000000">000001010000101100010</b>
+<b style="color:#000000">111101010101110001101110111010010111101</b><b style="color:#010000">00</b><b style="color:#000000">0</b><b style="color:#010001">1</b><b style="color:#000000">1</b><b style="color:#102610">0</b><b style="color:#9EC594">1</b><b style="color:#9ABC91">0</b><b style="color:#BCD6B9">0</b><b style="color:#E6F0E0">0</b><b style="color:#447B3D">0</b><b style="color:#254E22">1</b><b style="color:#BACFB4">1</b><b style="color:#F0FDE9">1</b><b style="color:#8AAE85">1</b><b style="color:#F6FEF0">0</b><b style="color:#CCDDC4">0</b><b style="color:#2D5928">1</b><b style="color:#000000">1</b><b style="color:#010101">1</b><b style="color:#000000">000001010011100011101</b>
+<b style="color:#000000">00011100010011110001001111111011110100</b><b style="color:#000001">0</b><b style="color:#010000">0</b><b style="color:#000000">1</b><b style="color:#000001">1</b><b style="color:#020002">0</b><b style="color:#000000">0</b><b style="color:#243F24">1</b><b style="color:#A7CBA2">0</b><b style="color:#8DB685">0</b><b style="color:#69A162">1</b><b style="color:#B9D2B5">1</b><b style="color:#AECDA8">0</b><b style="color:#7BA973">0</b><b style="color:#FFFFFB">1</b><b style="color:#BFD2BA">1</b><b style="color:#94B892">0</b><b style="color:#FCFFF5">1</b><b style="color:#FFFEF7">1</b><b style="color:#8EB38A">0</b><b style="color:#0D2C0C">0</b><b style="color:#000000">1011011001001100000001</b>
+<b style="color:#000000">10110011101110001100011010110001100010</b><b style="color:#000001">1</b><b style="color:#000000">0</b><b style="color:#010000">0</b><b style="color:#000001">0</b><b style="color:#010002">0</b><b style="color:#000000">0</b><b style="color:#294425">1</b><b style="color:#B5D9AF">1</b><b style="color:#93B491">0</b><b style="color:#E9F6E3">0</b><b style="color:#8CB186">0</b><b style="color:#99C095">1</b><b style="color:#98B990">0</b><b style="color:#A3C29A">1</b><b style="color:#8EB687">0</b><b style="color:#E2F0DF">0</b><b style="color:#FBFBF4">1</b><b style="color:#FEFEF7">0</b><b style="color:#C8DFC4">0</b><b style="color:#265124">0</b><b style="color:#000000">0</b><b style="color:#010001">1</b><b style="color:#000100">1</b><b style="color:#000000">0010110010110010000</b>
+<b style="color:#000000">1000000011000110100101111001010011100000</b><b style="color:#020000">0</b><b style="color:#000001">1</b><b style="color:#000000">0</b><b style="color:#010100">1</b><b style="color:#3E623B">0</b><b style="color:#B3D3AB">0</b><b style="color:#99B996">0</b><b style="color:#FFFFF6">1</b><b style="color:#F5FCF1">0</b><b style="color:#9FC19D">0</b><b style="color:#95B98E">0</b><b style="color:#78A671">1</b><b style="color:#C4D8BD">0</b><b style="color:#FFFFF6">0</b><b style="color:#FAFAF3">0</b><b style="color:#F8FEF5">0</b><b style="color:#E4F5DF">1</b><b style="color:#4C7B44">1</b><b style="color:#050C04">0</b><b style="color:#000000">0</b><b style="color:#000100">0</b><b style="color:#020001">0</b><b style="color:#010002">0</b><b style="color:#000100">0</b><b style="color:#000000">1101101110110101</b>
+<b style="color:#000000">110010000011001000101011110110010100011</b><b style="color:#000002">0</b><b style="color:#010002">0</b><b style="color:#000000">01</b><b style="color:#020901">1</b><b style="color:#51824A">1</b><b style="color:#CAE2C7">0</b><b style="color:#91B38B">0</b><b style="color:#FBFDF3">0</b><b style="color:#FBFBF5">1</b><b style="color:#FCFFF8">1</b><b style="color:#CADDC6">0</b><b style="color:#97BA90">1</b><b style="color:#9DBC96">0</b><b style="color:#F2F8EF">0</b><b style="color:#FAFAF4">0</b><b style="color:#FDFFF6">0</b><b style="color:#C4D9BD">1</b><b style="color:#31602B">1</b><b style="color:#030602">1</b><b style="color:#010002">0</b><b style="color:#000000">0</b><b style="color:#020001">0</b><b style="color:#010003">1</b><b style="color:#000000">10011111010111101</b>
+<b style="color:#000000">010101110101000100100001011001100100000</b><b style="color:#000002">1</b><b style="color:#010002">1</b><b style="color:#010000">0</b><b style="color:#010003">1</b><b style="color:#010802">0</b><b style="color:#3D7436">1</b><b style="color:#DFEDD9">0</b><b style="color:#ADC8A9">1</b><b style="color:#BBD2B7">1</b><b style="color:#FDFFFA">1</b><b style="color:#F8FCEC">0</b><b style="color:#FFFFFC">1</b><b style="color:#B6D3B3">0</b><b style="color:#66945D">1</b><b style="color:#DEEAD7">0</b><b style="color:#FEFDF9">1</b><b style="color:#F4FCF0">1</b><b style="color:#6B9E61">1</b><b style="color:#0C1B0A">0</b><b style="color:#010001">1</b><b style="color:#030003">1</b><b style="color:#000100">1</b><b style="color:#000000">0</b><b style="color:#000001">1</b><b style="color:#000000">00110001110101010</b>
+<b style="color:#000000">011101100001000010111111101110001010001</b><b style="color:#000001">0</b><b style="color:#010000">0</b><b style="color:#000000">0</b><b style="color:#010003">0</b><b style="color:#000000">0</b><b style="color:#20411D">1</b><b style="color:#A9CEA2">1</b><b style="color:#EEF5E7">1</b><b style="color:#709D67">0</b><b style="color:#E1EFDF">0</b><b style="color:#F9FDF4">0</b><b style="color:#FEFFF9">1</b><b style="color:#CADDC5">0</b><b style="color:#73A56A">0</b><b style="color:#F4FCEE">1</b><b style="color:#FFFFFC">1</b><b style="color:#A3C39E">1</b><b style="color:#1D4217">1</b><b style="color:#010002">1</b><b style="color:#010101">0</b><b style="color:#000000">100010111010000001100</b>
+<b style="color:#000000">00011010010010001011111101011011101001</b><b style="color:#000001">1</b><b style="color:#000000">0</b><b style="color:#000100">1</b><b style="color:#000000">10</b><b style="color:#010002">1</b><b style="color:#010402">1</b><b style="color:#396133">1</b><b style="color:#D2EACB">0</b><b style="color:#8EB688">0</b><b style="color:#BAD1B5">1</b><b style="color:#FFFEFB">1</b><b style="color:#F0F7EC">1</b><b style="color:#89AE81">1</b><b style="color:#D5E3D0">1</b><b style="color:#FCFFF9">1</b><b style="color:#C6DFC1">1</b><b style="color:#2D5029">1</b><b style="color:#000000">0</b><b style="color:#000101">1</b><b style="color:#010101">0</b><b style="color:#000000">101000111111011001110</b>
+<b style="color:#000000">100111000001100111100110100111111110010</b><b style="color:#020001">1</b><b style="color:#000001">1</b><b style="color:#020003">0</b><b style="color:#010101">0</b><b style="color:#000400">1</b><b style="color:#040004">0</b><b style="color:#031C02">0</b><b style="color:#98B78F">1</b><b style="color:#E4EDE1">0</b><b style="color:#BED3BA">1</b><b style="color:#F3F8EB">0</b><b style="color:#B2C8AC">1</b><b style="color:#D3E2CD">0</b><b style="color:#FBFFF4">1</b><b style="color:#FFFEFC">0</b><b style="color:#94BE8C">0</b><b style="color:#11250E">0</b><b style="color:#000000">0</b><b style="color:#010103">0</b><b style="color:#000001">10</b><b style="color:#000000">11010000011100100010</b>
+<b style="color:#000000">01110100010011100000011110001110000111</b><b style="color:#000100">0</b><b style="color:#030103">1</b><b style="color:#020001">0</b><b style="color:#000100">0</b><b style="color:#020003">0</b><b style="color:#010002">0</b><b style="color:#000000">1</b><b style="color:#1B3D19">0</b><b style="color:#B5D3AB">1</b><b style="color:#FFFCFA">1</b><b style="color:#F5FBEE">0</b><b style="color:#F2F6F0">0</b><b style="color:#E1E9D9">1</b><b style="color:#F6F8F1">1</b><b style="color:#F9FFF3">1</b><b style="color:#FFFFFB">0</b><b style="color:#AFD0AA">0</b><b style="color:#224A1D">0</b><b style="color:#000000">1</b><b style="color:#000001">0</b><b style="color:#010101">1</b><b style="color:#020002">0</b><b style="color:#010001">1</b><b style="color:#000000">10</b><b style="color:#010202">1</b><b style="color:#030403">1</b><b style="color:#020202">1</b><b style="color:#010001">0</b><b style="color:#000000">1</b><b style="color:#010102">1</b><b style="color:#000101">1</b><b style="color:#000000">0001100100</b>
+<b style="color:#000000">000001111111000000011110001101001100011</b><b style="color:#010101">0</b><b style="color:#010002">0</b><b style="color:#000102">0</b><b style="color:#000001">0</b><b style="color:#000000">0</b><b style="color:#183A12">0</b><b style="color:#87AF80">1</b><b style="color:#F6FCF0">0</b><b style="color:#FBFBF6">1</b><b style="color:#EEF8EA">0</b><b style="color:#B3CDAD">1</b><b style="color:#76A26E">0</b><b style="color:#8CAF85">1</b><b style="color:#A4C49F">1</b><b style="color:#E7F3E4">1</b><b style="color:#F8F8F3">1</b><b style="color:#9EC099">0</b><b style="color:#294D25">0</b><b style="color:#020703">0</b><b style="color:#000001">1</b><b style="color:#030003">0</b><b style="color:#0A110B">0</b><b style="color:#132312">0</b><b style="color:#172916">0</b><b style="color:#162516">0</b><b style="color:#142912">1</b><b style="color:#172815">1</b><b style="color:#0B150A">1</b><b style="color:#090D09">1</b><b style="color:#020202">1</b><b style="color:#020001">1</b><b style="color:#010001">0</b><b style="color:#000000">001000111</b>
+<b style="color:#000000">10111111000010000001111011100110111110</b><b style="color:#010003">0</b><b style="color:#010102">1</b><b style="color:#000000">01</b><b style="color:#041104">1</b><b style="color:#31582B">0</b><b style="color:#9BBF92">0</b><b style="color:#F5FCF0">1</b><b style="color:#FBFEF7">1</b><b style="color:#FDFEF9">1</b><b style="color:#E2EEDC">0</b><b style="color:#AFC5A8">1</b><b style="color:#A0C499">1</b><b style="color:#9AC193">0</b><b style="color:#85AE80">0</b><b style="color:#CFE2CA">0</b><b style="color:#FDFDF8">1</b><b style="color:#FEFFF7">1</b><b style="color:#C7E2C2">0</b><b style="color:#547E50">0</b><b style="color:#1C3D1B">1</b><b style="color:#244822">0</b><b style="color:#264A23">1</b><b style="color:#244321">0</b><b style="color:#1D3A1B">1</b><b style="color:#1A3318">1</b><b style="color:#1A2D19">1</b><b style="color:#152514">0</b><b style="color:#121F11">1</b><b style="color:#0B140B">0</b><b style="color:#020502">0</b><b style="color:#010102">1</b><b style="color:#000001">0</b><b style="color:#000000">101111011</b>
+<b style="color:#000000">1101100001100111001</b><b style="color:#000102">0</b><b style="color:#020000">0</b><b style="color:#010001">0</b><b style="color:#000001">1</b><b style="color:#000000">00</b><b style="color:#010002">1</b><b style="color:#000001">0</b><b style="color:#000000">101110100011</b><b style="color:#020800">1</b><b style="color:#142610">0</b><b style="color:#385F39">1</b><b style="color:#77A472">0</b><b style="color:#CFE4C7">1</b><b style="color:#F0F7ED">1</b><b style="color:#E8F0E3">1</b><b style="color:#E4EEDF">0</b><b style="color:#DFEAD9">1</b><b style="color:#DCE7D5">1</b><b style="color:#DEE7D9">0</b><b style="color:#D9E4D4">1</b><b style="color:#CFDFC9">0</b><b style="color:#EEF5E8">1</b><b style="color:#FFFFFA">1</b><b style="color:#F7FCF5">0</b><b style="color:#FAFDF3">1</b><b style="color:#E8F2E2">0</b><b style="color:#80AD7D">1</b><b style="color:#408734">1</b><b style="color:#2E5E29">0</b><b style="color:#244421">0</b><b style="color:#1E3D1B">1</b><b style="color:#1B2F18">0</b><b style="color:#142610">1</b><b style="color:#101E10">0</b><b style="color:#0E180E">1</b><b style="color:#040704">0</b><b style="color:#000001">0</b><b style="color:#020002">11</b><b style="color:#000001">0</b><b style="color:#000000">001001001</b>
+<b style="color:#000000">0001111100000001101</b><b style="color:#000001">1</b><b style="color:#020001">1</b><b style="color:#010100">0</b><b style="color:#000101">0</b><b style="color:#010001">1</b><b style="color:#000000">0</b><b style="color:#000400">1</b><b style="color:#061505">0</b><b style="color:#132910">0</b><b style="color:#1E3F1A">0</b><b style="color:#274D21">1</b><b style="color:#2E5427">1</b><b style="color:#345A2D">0</b><b style="color:#3A5D35">1</b><b style="color:#3E5E3B">1</b><b style="color:#3E5B3C">0</b><b style="color:#3C583B">0</b><b style="color:#3B5739">0</b><b style="color:#435F3F">1</b><b style="color:#5D7D56">0</b><b style="color:#8DA987">0</b><b style="color:#C0D8BA">1</b><b style="color:#E9F5E2">0</b><b style="color:#FDFEF7">1</b><b style="color:#F5FCEF">0</b><b style="color:#D9E2D5">1</b><b style="color:#D3E4CC">1</b><b style="color:#D4E3CF">0</b><b style="color:#CEE0CB">0</b><b style="color:#BFD4B8">1</b><b style="color:#A6C79F">1</b><b style="color:#8DB489">1</b><b style="color:#90B489">0</b><b style="color:#CEDEC9">0</b><b style="color:#D6E6D4">0</b><b style="color:#F6FBEB">1</b><b style="color:#FBF9F5">1</b><b style="color:#FAFEF9">0</b><b style="color:#EEF5E7">0</b><b style="color:#598F53">1</b><b style="color:#112E0E">1</b><b style="color:#0F180F">1</b><b style="color:#0D150D">0</b><b style="color:#090F09">1</b><b style="color:#060C05">1</b><b style="color:#050A06">0</b><b style="color:#060907">0</b><b style="color:#030404">0</b><b style="color:#010001">11</b><b style="color:#010101">1</b><b style="color:#000000">0001110011</b>
+<b style="color:#000000">11101011000011000011</b><b style="color:#010101">0</b><b style="color:#010001">0</b><b style="color:#000000">0</b><b style="color:#071208">1</b><b style="color:#20421E">1</b><b style="color:#4A7C42">0</b><b style="color:#7BA774">0</b><b style="color:#A5CA9E">0</b><b style="color:#C2DCBC">0</b><b style="color:#D4E8CF">0</b><b style="color:#DEEED8">0</b><b style="color:#E4F4DF">1</b><b style="color:#EDF9E6">0</b><b style="color:#F1FAEB">0</b><b style="color:#F4FBEE">1</b><b style="color:#F6FCF0">1</b><b style="color:#F5FBEF">0</b><b style="color:#F5FCEF">1</b><b style="color:#FAFFF4">1</b><b style="color:#FFFFF8">1</b><b style="color:#FEFFF7">1</b><b style="color:#F7FFF5">0</b><b style="color:#F7FCF3">0</b><b style="color:#F7FCF0">1</b><b style="color:#EDF2E5">1</b><b style="color:#D6E3D2">1</b><b style="color:#C0D6B8">0</b><b style="color:#B1CBA8">0</b><b style="color:#A7C7A1">0</b><b style="color:#A1C09C">0</b><b style="color:#97BC90">1</b><b style="color:#9BBE92">1</b><b style="color:#AAC8A4">1</b><b style="color:#CCDCC5">0</b><b style="color:#FBFFF4">1</b><b style="color:#FEFFF8">1</b><b style="color:#EEF8E9">1</b><b style="color:#A5C9A1">1</b><b style="color:#2D522B">1</b><b style="color:#000000">0001</b><b style="color:#010001">00</b><b style="color:#000001">0</b><b style="color:#010001">000</b><b style="color:#010002">0</b><b style="color:#000000">1000000100</b>
+<b style="color:#000000">1111110000101100001</b><b style="color:#010100">0</b><b style="color:#000001">1</b><b style="color:#020502">1</b><b style="color:#21431B">0</b><b style="color:#6C9D67">0</b><b style="color:#C0DABD">0</b><b style="color:#EEF8E8">0</b><b style="color:#FCFFF7">0</b><b style="color:#FEFFF9">10</b><b style="color:#FDFEF8">1</b><b style="color:#FCFEF6">0</b><b style="color:#FAFEF5">1</b><b style="color:#FAFDF5">0</b><b style="color:#FAFDF4">0</b><b style="color:#F9FDF4">0</b><b style="color:#FAFDF4">1</b><b style="color:#F9FDF4">0</b><b style="color:#F9FDF5">0</b><b style="color:#F8FCF5">0</b><b style="color:#F7FCF1">1</b><b style="color:#F8FCF2">1</b><b style="color:#F8FCF4">0</b><b style="color:#F9FBF3">1</b><b style="color:#F0F3EA">0</b><b style="color:#C7DCC6">1</b><b style="color:#D1E1CD">1</b><b style="color:#CBDEC7">1</b><b style="color:#B2CEAF">0</b><b style="color:#ADCDA6">1</b><b style="color:#C2D1BC">0</b><b style="color:#D1E3CE">1</b><b style="color:#CCE3C6">0</b><b style="color:#B8CFB2">1</b><b style="color:#839F7F">0</b><b style="color:#637E5E">0</b><b style="color:#5F7958">1</b><b style="color:#395135">0</b><b style="color:#0B2209">0</b><b style="color:#030103">0</b><b style="color:#010001">1</b><b style="color:#000100">1</b><b style="color:#010001">0</b><b style="color:#010003">0</b><b style="color:#000000">00110111010010001</b>
+<b style="color:#000000">00011101100101111</b><b style="color:#010001">1</b><b style="color:#030004">1</b><b style="color:#000000">1</b><b style="color:#0C1A0B">0</b><b style="color:#3C6D37">1</b><b style="color:#AED0A7">1</b><b style="color:#F9FDF2">0</b><b style="color:#FEFFF8">0</b><b style="color:#FBFCF8">1</b><b style="color:#F8FBF2">11</b><b style="color:#F8FCF2">11101000000111</b><b style="color:#F8FBF2">0</b><b style="color:#F8FCF3">0</b><b style="color:#FBFEF6">0</b><b style="color:#F9FFF3">1</b><b style="color:#DBE4D3">0</b><b style="color:#DEE9DA">0</b><b style="color:#FBFCF8">0</b><b style="color:#BED8B4">0</b><b style="color:#5B8C56">1</b><b style="color:#1E371C">1</b><b style="color:#061506">0</b><b style="color:#000300">1</b><b style="color:#000000">0000</b><b style="color:#010101">1</b><b style="color:#000000">111110110110101001010</b>
+<b style="color:#000000">0100101110001011</b><b style="color:#000101">1</b><b style="color:#000100">1</b><b style="color:#000000">1</b><b style="color:#132B11">1</b><b style="color:#5E9258">1</b><b style="color:#D0E5CB">1</b><b style="color:#FFFEFF">1</b><b style="color:#F6FDF1">1</b><b style="color:#F7FCF2">0</b><b style="color:#F9FBF4">1</b><b style="color:#F8FCF2">10</b><b style="color:#F8FBF2">0</b><b style="color:#F8FCF2">0100100110101</b><b style="color:#F8FBF2">0</b><b style="color:#F8FCF2">0</b><b style="color:#FAFCF5">1</b><b style="color:#FCFDF7">1</b><b style="color:#FCFDF5">1</b><b style="color:#F9FEF5">0</b><b style="color:#FAFDF4">0</b><b style="color:#DEECD5">0</b><b style="color:#76A472">0</b><b style="color:#183216">1</b><b style="color:#000000">011</b><b style="color:#000100">1</b><b style="color:#030605">0</b><b style="color:#010402">0</b><b style="color:#000000">1000001010011110100111</b>
+<b style="color:#000000">1001000</b><b style="color:#010000">11</b><b style="color:#000000">1111</b><b style="color:#000100">0</b><b style="color:#000000">111</b><b style="color:#000200">0</b><b style="color:#233E20">1</b><b style="color:#8FB489">1</b><b style="color:#EFF8E8">1</b><b style="color:#FFFEF5">1</b><b style="color:#F8FBF2">0</b><b style="color:#F6FDF3">1</b><b style="color:#F8FCF2">0</b><b style="color:#FAFAF3">1</b><b style="color:#F8FCF2">0000111000011</b><b style="color:#F9FBF3">010</b><b style="color:#F7FCF2">0</b><b style="color:#F8FDF3">1</b><b style="color:#EBF2E6">1</b><b style="color:#DBE7D5">0</b><b style="color:#FBFCF4">0</b><b style="color:#F8FBF2">1</b><b style="color:#F6FCF3">0</b><b style="color:#FEFCF5">1</b><b style="color:#F5FBF0">1</b><b style="color:#7EAB79">0</b><b style="color:#6E8D68">1</b><b style="color:#6D8366">0</b><b style="color:#4A6945">0</b><b style="color:#8EA589">0</b><b style="color:#95B58F">0</b><b style="color:#2E542A">0</b><b style="color:#030203">0</b><b style="color:#000000">1</b><b style="color:#000001">1</b><b style="color:#000000">0101011010100011010</b>
+<b style="color:#000000">101001</b><b style="color:#000001">1</b><b style="color:#020001">0</b><b style="color:#010103">01</b><b style="color:#020102">0</b><b style="color:#1A2F1B">0</b><b style="color:#5F7B5B">0</b><b style="color:#8FA88B">0</b><b style="color:#90A68B">1</b><b style="color:#627E5F">0</b><b style="color:#334B30">1</b><b style="color:#37612D">1</b><b style="color:#9BC092">1</b><b style="color:#FBFFF5">1</b><b style="color:#FBFDF5">0</b><b style="color:#F8FBF2">0</b><b style="color:#F8FCF2">010001111111000</b><b style="color:#F8FBF2">1</b><b style="color:#FAFFF3">0</b><b style="color:#FAFFF9">0</b><b style="color:#F9FBF4">0</b><b style="color:#F8FCF2">0</b><b style="color:#F7FCF3">1</b><b style="color:#FDFCF4">1</b><b style="color:#D7E7D5">1</b><b style="color:#8EB387">1</b><b style="color:#FEFDF6">0</b><b style="color:#F7FCF1">0</b><b style="color:#F7FCF3">0</b><b style="color:#FAFBF4">1</b><b style="color:#FFFEF9">0</b><b style="color:#FFFFFD">01</b><b style="color:#FFFFFC">0</b><b style="color:#E6F6E3">1</b><b style="color:#C8DAC0">1</b><b style="color:#849D7E">1</b><b style="color:#1A3117">1</b><b style="color:#000200">1</b><b style="color:#000100">1</b><b style="color:#010002">0</b><b style="color:#010001">0</b><b style="color:#000000">010000010001001100</b>
+<b style="color:#000000">1001010</b><b style="color:#010002">0</b><b style="color:#010301">1</b><b style="color:#030105">0</b><b style="color:#2F512C">1</b><b style="color:#BBDBB4">0</b><b style="color:#FDFFF8">0</b><b style="color:#FFFFFD">1</b><b style="color:#FFFFFB">0</b><b style="color:#FDFFF7">0</b><b style="color:#EFF7E9">1</b><b style="color:#E5F2DF">1</b><b style="color:#F8FAF3">1</b><b style="color:#F9FBF4">0</b><b style="color:#F8FBF2">11</b><b style="color:#F8FCF2">000110111110111</b><b style="color:#FBFEF5">1</b><b style="color:#D0DECA">0</b><b style="color:#C9DBC3">1</b><b style="color:#FCFEF5">0</b><b style="color:#F6FDEE">1</b><b style="color:#F9FBF5">0</b><b style="color:#F8FEF2">1</b><b style="color:#DFECDC">0</b><b style="color:#6C9963">1</b><b style="color:#ECF9E7">1</b><b style="color:#FBFDF9">1</b><b style="color:#FDFDF4">1</b><b style="color:#D7E8D3">1</b><b style="color:#88AE82">0</b><b style="color:#789470">0</b><b style="color:#6A8667">0</b><b style="color:#577653">0</b><b style="color:#314A2E">0</b><b style="color:#0A150A">1</b><b style="color:#000000">10</b><b style="color:#020000">1</b><b style="color:#010000">10</b><b style="color:#000000">0100101010000101010</b>
+<b style="color:#000000">100000</b><b style="color:#020001">1</b><b style="color:#010101">0</b><b style="color:#020101">1</b><b style="color:#010401">1</b><b style="color:#426F3D">0</b><b style="color:#E3F5DB">0</b><b style="color:#FFFFFD">1</b><b style="color:#FFFFFC">00</b><b style="color:#E8F3E3">1</b><b style="color:#E7ECE2">1</b><b style="color:#FEFEF8">0</b><b style="color:#F9FBF0">0</b><b style="color:#F9FCF3">1</b><b style="color:#F8FBF2">01</b><b style="color:#F8FCF2">0110100101</b><b style="color:#F8FBF2">1</b><b style="color:#F8FCF3">1</b><b style="color:#F8FCF2">1</b><b style="color:#F9FBF3">1</b><b style="color:#F9FBF4">0</b><b style="color:#FCFEF7">0</b><b style="color:#C6DDC0">0</b><b style="color:#5A9354">0</b><b style="color:#EBF3E4">0</b><b style="color:#F9FCF2">0</b><b style="color:#F6FBF3">0</b><b style="color:#FFFFF9">1</b><b style="color:#B9D2B1">1</b><b style="color:#387E30">0</b><b style="color:#86B185">1</b><b style="color:#F0F6EA">0</b><b style="color:#FEFFFA">0</b><b style="color:#F4F9EF">0</b><b style="color:#B2D0AD">0</b><b style="color:#2E532A">0</b><b style="color:#000000">100</b><b style="color:#000002">0</b><b style="color:#010101">1</b><b style="color:#020002">0</b><b style="color:#000000">1110011010000001001110</b>
+<b style="color:#000000">110110</b><b style="color:#010001">1</b><b style="color:#000100">1</b><b style="color:#020103">0</b><b style="color:#050008">0</b><b style="color:#0B160B">1</b><b style="color:#41613D">1</b><b style="color:#7BA077">0</b><b style="color:#98BA92">1</b><b style="color:#B6D3AE">0</b><b style="color:#D6E7D0">1</b><b style="color:#93B68E">0</b><b style="color:#DFEBDB">0</b><b style="color:#FAFCF7">1</b><b style="color:#F8FBF2">0</b><b style="color:#F8FCF2">1</b><b style="color:#F8FBF2">1</b><b style="color:#F8FCF2">010100100</b><b style="color:#F8FBF3">1</b><b style="color:#F9FBF4">0</b><b style="color:#F8FBF4">1</b><b style="color:#F7FCF2">0</b><b style="color:#F8FCF1">1</b><b style="color:#F8FBF3">0</b><b style="color:#FAFCF3">1</b><b style="color:#E6F0E3">1</b><b style="color:#528D49">1</b><b style="color:#D3E3CE">0</b><b style="color:#FBFDF6">0</b><b style="color:#FCFEF8">1</b><b style="color:#E6F0E1">0</b><b style="color:#5C9453">1</b><b style="color:#163515">0</b><b style="color:#081808">0</b><b style="color:#486D40">0</b><b style="color:#CCDEC4">1</b><b style="color:#FEFFFA">0</b><b style="color:#FFFFFD">0</b><b style="color:#98BB90">0</b><b style="color:#112B0E">0</b><b style="color:#000000">0</b><b style="color:#010001">0</b><b style="color:#000000">01</b><b style="color:#000100">1</b><b style="color:#000000">0101111011101000110100</b>
+<b style="color:#000000">0000011</b><b style="color:#000001">0</b><b style="color:#000101">1</b><b style="color:#000200">0</b><b style="color:#020003">1</b><b style="color:#000001">0</b><b style="color:#000600">0</b><b style="color:#031203">1</b><b style="color:#132610">0</b><b style="color:#33592E">1</b><b style="color:#4E8946">1</b><b style="color:#D4E9D1">1</b><b style="color:#FFFFF9">0</b><b style="color:#F8FBF2">1</b><b style="color:#F8FCF2">0</b><b style="color:#F8FBF2">0</b><b style="color:#F8FCF2">000001011</b><b style="color:#F8FCF3">0</b><b style="color:#F6FDF3">1</b><b style="color:#FCFAF0">0</b><b style="color:#F9FAF5">0</b><b style="color:#F6FCF4">1</b><b style="color:#F9FCEE">0</b><b style="color:#FFFFFD">1</b><b style="color:#B0CDAD">1</b><b style="color:#609659">1</b><b style="color:#F0F9EE">0</b><b style="color:#FFFFFA">1</b><b style="color:#F0F5E8">1</b><b style="color:#73A36B">1</b><b style="color:#153C15">0</b><b style="color:#000000">0</b><b style="color:#000001">0</b><b style="color:#000000">0</b><b style="color:#395934">0</b><b style="color:#DDEFD9">1</b><b style="color:#E8F3E3">0</b><b style="color:#C7DEC4">0</b><b style="color:#436E3E">1</b><b style="color:#000000">1</b><b style="color:#010102">0</b><b style="color:#010001">10</b><b style="color:#000000">00110000011001001010110</b>
+<b style="color:#000000">111000</b><b style="color:#010101">1</b><b style="color:#020002">1</b><b style="color:#010003">0</b><b style="color:#000000">10</b><b style="color:#010001">1</b><b style="color:#020001">0</b><b style="color:#000001">0</b><b style="color:#010003">0</b><b style="color:#000000">1</b><b style="color:#122911">0</b><b style="color:#689461">1</b><b style="color:#E3F1DC">0</b><b style="color:#FEFFF8">0</b><b style="color:#F7FAF1">0</b><b style="color:#F8FCF2">01</b><b style="color:#F8FCF3">0</b><b style="color:#F8FCF2">0</b><b style="color:#F8FBF3">1</b><b style="color:#F8FBF2">1</b><b style="color:#F8FCF2">01011</b><b style="color:#F7FCF3">1</b><b style="color:#FCFAF1">0</b><b style="color:#F7FCF1">0</b><b style="color:#FAFCF7">1</b><b style="color:#FFFFFB">1</b><b style="color:#CCE1C4">0</b><b style="color:#5E9456">1</b><b style="color:#C5D9BF">1</b><b style="color:#F5FAF1">1</b><b style="color:#CBE4C5">1</b><b style="color:#669260">1</b><b style="color:#173215">1</b><b style="color:#000000">0</b><b style="color:#010103">0</b><b style="color:#020204">0</b><b style="color:#050004">0</b><b style="color:#000300">0</b><b style="color:#455B42">1</b><b style="color:#8CA685">0</b><b style="color:#50784D">1</b><b style="color:#2A4328">1</b><b style="color:#010001">10</b><b style="color:#000000">1</b><b style="color:#010000">1</b><b style="color:#000000">10001010000011011001001</b>
+<b style="color:#000000">10011110</b><b style="color:#000001">1</b><b style="color:#000000">1000</b><b style="color:#000003">0</b><b style="color:#010102">0</b><b style="color:#020003">0</b><b style="color:#010003">1</b><b style="color:#0B1F09">1</b><b style="color:#548050">1</b><b style="color:#CDE2CA">1</b><b style="color:#FBFFF7">1</b><b style="color:#FCFEF5">1</b><b style="color:#FCFBF5">1</b><b style="color:#F9FCF5">0</b><b style="color:#F8FCF3">0</b><b style="color:#F8FCF2">1</b><b style="color:#F7FCF3">1</b><b style="color:#F8FCF1">0</b><b style="color:#F9FCF2">0</b><b style="color:#F8FBF3">1</b><b style="color:#F8FCF3">1</b><b style="color:#F9FDF1">0</b><b style="color:#FBFDF5">0</b><b style="color:#FEFEF9">0</b><b style="color:#FDFFF8">1</b><b style="color:#F0F6EC">0</b><b style="color:#ACC7A5">0</b><b style="color:#528B47">0</b><b style="color:#6DA364">1</b><b style="color:#8AB586">0</b><b style="color:#71A56B">1</b><b style="color:#417538">1</b><b style="color:#071E05">0</b><b style="color:#000000">10</b><b style="color:#000001">1</b><b style="color:#010100">0</b><b style="color:#000100">1</b><b style="color:#000000">10</b><b style="color:#000102">1</b><b style="color:#000000">10</b><b style="color:#000002">1</b><b style="color:#000000">01010100111101000100010011</b>
+<b style="color:#000000">0100110101011</b><b style="color:#000001">0</b><b style="color:#000100">0</b><b style="color:#010002">1</b><b style="color:#030003">0</b><b style="color:#000000">0</b><b style="color:#030A03">0</b><b style="color:#2C5028">0</b><b style="color:#8CB085">1</b><b style="color:#D8E9D2">1</b><b style="color:#F3FDEF">0</b><b style="color:#F9FFF3">1</b><b style="color:#FCFFF5">0</b><b style="color:#FDFFF8">0</b><b style="color:#FDFFF7">1</b><b style="color:#FCFFF5">0</b><b style="color:#FCFDF6">1</b><b style="color:#F8FBF5">1</b><b style="color:#F3FAF0">1</b><b style="color:#EDF5E6">1</b><b style="color:#E0EBDA">0</b><b style="color:#C8DCC4">1</b><b style="color:#A4C49F">1</b><b style="color:#619B58">0</b><b style="color:#689A5F">1</b><b style="color:#C7DCC3">0</b><b style="color:#E8F5E4">0</b><b style="color:#F2F8EC">1</b><b style="color:#EDF0E7">0</b><b style="color:#CFDFCC">1</b><b style="color:#A2BA9C">1</b><b style="color:#667F5E">0</b><b style="color:#1D321B">0</b><b style="color:#000600">1</b><b style="color:#010002">1</b><b style="color:#020001">1</b><b style="color:#000000">10100100100011101010100110000111</b>
+<b style="color:#000000">10101110111101</b><b style="color:#010001">0</b><b style="color:#000000">0</b><b style="color:#010101">1</b><b style="color:#020002">0</b><b style="color:#020003">0</b><b style="color:#000000">0</b><b style="color:#061309">1</b><b style="color:#234321">1</b><b style="color:#4A6B43">1</b><b style="color:#5B7E56">0</b><b style="color:#62855F">1</b><b style="color:#6C9366">1</b><b style="color:#77A76F">0</b><b style="color:#7BAA72">0</b><b style="color:#8FBA87">1</b><b style="color:#A9CDA4">0</b><b style="color:#AFCDAB">0</b><b style="color:#B4CEAE">1</b><b style="color:#B8D2B0">0</b><b style="color:#C3D9BC">1</b><b style="color:#D5E4D1">1</b><b style="color:#DAE7D6">1</b><b style="color:#C9DAC3">1</b><b style="color:#B8D0B0">0</b><b style="color:#ACC9A6">0</b><b style="color:#C0D6BC">1</b><b style="color:#E8F0E4">0</b><b style="color:#FFFFFE">0</b><b style="color:#F8FEF2">1</b><b style="color:#DDEAD7">1</b><b style="color:#C4DCBE">0</b><b style="color:#385A34">0</b><b style="color:#020202">0</b><b style="color:#010000">1</b><b style="color:#000100">1</b><b style="color:#020002">0</b><b style="color:#010101">0</b><b style="color:#000000">01000011111000001010100100111</b>
+<b style="color:#000000">01010100010011010</b><b style="color:#000100">0</b><b style="color:#000000">0000000</b><b style="color:#000400">0</b><b style="color:#081408">0</b><b style="color:#11290E">0</b><b style="color:#20401B">0</b><b style="color:#34582E">0</b><b style="color:#4C7146">0</b><b style="color:#6B8D65">0</b><b style="color:#8FAF8C">0</b><b style="color:#C0D6BA">1</b><b style="color:#E9F5E2">1</b><b style="color:#FFFFFB">0</b><b style="color:#FFFFFD">0</b><b style="color:#FDFFF9">1</b><b style="color:#DDEBDA">1</b><b style="color:#B2CCAE">1</b><b style="color:#9BBC96">0</b><b style="color:#9CBD95">0</b><b style="color:#BAD9B6">1</b><b style="color:#A1C29F">1</b><b style="color:#77A46F">0</b><b style="color:#375F31">1</b><b style="color:#020302">0</b><b style="color:#010001">1</b><b style="color:#000100">0</b><b style="color:#010002">1</b><b style="color:#010001">1</b><b style="color:#000000">11010101000000011101000100001</b>
+<b style="color:#000000">00111010100111011111100111111010</b><b style="color:#000800">1</b><b style="color:#0C1E0B">1</b><b style="color:#32532E">1</b><b style="color:#74A06D">0</b><b style="color:#B9D9B4">0</b><b style="color:#F1F9EB">1</b><b style="color:#F9FBF3">1</b><b style="color:#BFD9B8">0</b><b style="color:#96BE8F">0</b><b style="color:#22491E">0</b><b style="color:#0C1A0C">1</b><b style="color:#101E0F">1</b><b style="color:#091808">0</b><b style="color:#030404">0</b><b style="color:#010002">0</b><b style="color:#000100">10</b><b style="color:#010001">01</b><b style="color:#000000">10000111111011110111000100001</b>
+<b style="color:#000000">01111100000101100101010101</b><b style="color:#000001">1</b><b style="color:#010001">01</b><b style="color:#010000">100</b><b style="color:#000002">1</b><b style="color:#000000">01</b><b style="color:#040F04">0</b><b style="color:#1E3C18">0</b><b style="color:#4A7144">0</b><b style="color:#638760">1</b><b style="color:#52764D">1</b><b style="color:#1B3E18">0</b><b style="color:#030303">0</b><b style="color:#020002">0</b><b style="color:#010000">10</b><b style="color:#010001">0</b><b style="color:#000200">1</b><b style="color:#010002">0</b><b style="color:#020003">0</b><b style="color:#000001">1</b><b style="color:#000100">0</b><b style="color:#000000">01010001011110001110010110101</b>
+<b style="color:#000000">11101010110111101001000010100011</b><b style="color:#000001">11</b><b style="color:#000000">0011101</b><b style="color:#010001">0</b><b style="color:#000001">0</b><b style="color:#000101">0</b><b style="color:#010001">1</b><b style="color:#010002">0</b><b style="color:#000000">1</b><b style="color:#010001">1</b><b style="color:#000000">0</b><b style="color:#000200">1</b><b style="color:#010002">0</b><b style="color:#000001">0</b><b style="color:#000000">0110101000101011011101001101</b>
+<b style="color:#000000">10001010101100001010011010011010100100001101110111000001011111001000111111010100</b>
+</pre>
+      <script>
+         document.addEventListener('DOMContentLoaded', function () {
+            const chars = document.querySelectorAll('#tiresult b');
+
+            // Handle responsive animation scaling
+            function adjustAnimation() {
+               const viewportWidth = window.innerWidth;
+               let scaleFactor = 1;
+
+               if (viewportWidth <= 480) {
+                  scaleFactor = 0.5;
+               } else if (viewportWidth <= 768) {
+                  scaleFactor = 0.7;
+               } else if (viewportWidth <= 1024) {
+                  scaleFactor = 0.85;
+               }
+
+               // function getRandomColor() {
+               //    return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+               // }
+
+               // let randomColors = Array.from({ length: 10 }, getRandomColor);
+               // setInterval(() => {
+               //    randomColors = Array.from({ length: 10 }, getRandomColor);
+               //     chars.forEach((char, index) => {
+               //    const colorIndex = Math.floor(Math.random() * randomColors.length);
+               //    char.style.color = randomColors[colorIndex];
+               // });
+               // }, 2000);
+              
+               // console.log(randomColors);
+               
+               chars.forEach((char, index) => {
+                  const row = Math.floor(index / 130);
+                  const col = index % 130;
+                  const delay = (col * 0.015 + row * 0.06) % 1.5;
+
+                  char.style.animationDelay = delay + 's';
+                  const durationVariation = 0.9 + Math.random() * 0.2; // 0.9-1.1
+                  char.style.animationDuration = (1.5 * durationVariation) + 's';
+
+                  // Scale transform values based on viewport
+                  const style = document.createElement('style');
+                  style.innerHTML = `
+                     @keyframes wave {
+                        0% { transform: translateY(0) rotate(0deg); }
+                        20% { transform: translateY(${-1 * scaleFactor}px) rotate(${1.5 * scaleFactor}deg) translateX(${0.8 * scaleFactor}px); }
+                        40% { transform: translateY(${-0.5 * scaleFactor}px) rotate(${0.5 * scaleFactor}deg) translateX(${0.4 * scaleFactor}px); }
+                        60% { transform: translateY(0) rotate(0deg); }
+                        80% { transform: translateY(${0.8 * scaleFactor}px) rotate(${-1.5 * scaleFactor}deg) translateX(${-0.8 * scaleFactor}px); }
+                        100% { transform: translateY(0) rotate(0deg); }
+                     }
+                     
+                  `;
+                  document.head.appendChild(style);
+               });
+            }
+
+            // Initial setup
+            adjustAnimation();
+
+            // Re-adjust on window resize
+            window.addEventListener('resize', adjustAnimation);
+         });
+      </script>
+</body>
+
+</html>
