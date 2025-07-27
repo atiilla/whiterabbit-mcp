@@ -11,6 +11,7 @@ from toolkit.ocr2text import ExecOcr2Text
 from toolkit.sublist3r import ExecSublist3r
 from toolkit.dnsrecon import ExecDNSRecon
 from toolkit.sherlock import ExecSherlock
+from toolkit.amass import ExecAmass
 
 # Create server
 mcp = FastMCP(name="WhiteRabbitMCP",
@@ -112,6 +113,28 @@ def SherlockScanner(
 ) -> Dict[str, Any]:
     """Wrapper for running Sherlock username enumeration."""
     return ExecSherlock(usernames)
+
+
+@mcp.tool()
+async def AmassScanner(
+    subcommand: str,
+    domain: Optional[str] = None,
+    intel_whois: Optional[bool] = None,
+    intel_organization: Optional[str] = None,
+    enum_type: Optional[str] = None,
+    enum_brute: Optional[bool] = None,
+    enum_brute_wordlist: Optional[str] = None
+) -> Dict[str, Any]:
+    """Wrapper for running Amass subdomain enumeration and reconnaissance."""
+    return await ExecAmass(
+        subcommand=subcommand,
+        domain=domain,
+        intel_whois=intel_whois,
+        intel_organization=intel_organization,
+        enum_type=enum_type,
+        enum_brute=enum_brute,
+        enum_brute_wordlist=enum_brute_wordlist
+    )
 
 
 if __name__ == "__main__":
