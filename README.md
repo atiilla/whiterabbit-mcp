@@ -105,6 +105,7 @@ Zmap
 - [x] Sqlmap - SQL injection scanner
 - [x] WPScan - WordPress security scanner
 - [x] Zmap - Internet scanner
+- [x] Amass - Subdomain enumeration and reconnaissance tool
 
 ### Planned Tools
 - [ ] gobuster
