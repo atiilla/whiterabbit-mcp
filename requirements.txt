@@ -1,3 +1,4 @@
+aiohttp==3.10.11
 mcp==1.6.0
 numpy==1.26.4
 opencv-python-headless==4.9.0.80

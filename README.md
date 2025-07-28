@@ -106,6 +106,7 @@ Zmap
 - [x] WPScan - WordPress security scanner
 - [x] Zmap - Internet scanner
 - [x] Amass - Subdomain enumeration and reconnaissance tool
+- [x] Crt.sh - Subdomain enumeration from SSL certificate logs
 
 ### Planned Tools
 - [ ] gobuster

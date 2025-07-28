@@ -12,6 +12,7 @@ from toolkit.sublist3r import ExecSublist3r
 from toolkit.dnsrecon import ExecDNSRecon
 from toolkit.sherlock import ExecSherlock
 from toolkit.amass import ExecAmass
+from toolkit.crtsh import ExecCrtsh
 
 # Create server
 mcp = FastMCP(name="WhiteRabbitMCP",
@@ -135,6 +136,14 @@ async def AmassScanner(
         enum_brute=enum_brute,
         enum_brute_wordlist=enum_brute_wordlist
     )
+
+
+@mcp.tool()
+async def CrtshScanner(
+    target: str,
+) -> List[str]:
+    """Wrapper for discovering subdomains from SSL certificate logs using crt.sh."""
+    return await ExecCrtsh(target)
 
 
 if __name__ == "__main__":
