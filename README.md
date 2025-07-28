@@ -122,7 +122,6 @@ Zmap
 - [ ] Wappalyzer
 - [ ] Hunter.io
 - [ ] Nuclei
-- [ ] Amass
 - [ ] GitSecrets - @awslabs/git-secrets or @trufflesecurity/trufflehog
 - [ ] Depixelization - https://github.com/spipm/Depixelization_poc
 - [ ] ExifTool 
